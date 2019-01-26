@@ -36,8 +36,8 @@ class SimpleXMLTest {
     @Test
     fun testDeserializationGetDepartureBoard() {
         val xml = File("./src/test/res/sample_get_departure_board.xml").readText()
-        val clz: Class<Envelope<DepartureBoardResponse>> =
-            Envelope::class.java as Class<Envelope<DepartureBoardResponse>>
+        val clz: Class<Envelope<BoardResponse>> =
+            Envelope::class.java as Class<Envelope<BoardResponse>>
         val envelope = persister.read(clz, xml, false)
         envelope.body.item.apply {
             Assert.assertNotNull(this.stationBoardResult)
@@ -48,15 +48,15 @@ class SimpleXMLTest {
     @Test
     fun testDeserializationGetDepartureBoardWithDetails() {
         val xml = File("./src/test/res/sample_get_departure_board_with_details.xml").readText()
-        val clz: Class<Envelope<DepartureBoardWithDetailsResponse>> =
-            Envelope::class.java as Class<Envelope<DepartureBoardWithDetailsResponse>>
+        val clz: Class<Envelope<BoardResponse>> =
+            Envelope::class.java as Class<Envelope<BoardResponse>>
         val envelope = persister.read(clz, xml, false)
         envelope.body.item.apply {
             Assert.assertNotNull(this.stationBoardResult)
             this.stationBoardResult?.trainServices?.first()?.let {
                 assertNotNull(it)
-                assertTrue(it.callingPoints.isNotEmpty())
-                assertNotNull(it.callingPoints.first().locationName)
+                assertTrue(it.departureCallingPoints?.isNotEmpty() ?: false)
+                assertNotNull(it.departureCallingPoints?.first()?.locationName)
             }
         }
     }

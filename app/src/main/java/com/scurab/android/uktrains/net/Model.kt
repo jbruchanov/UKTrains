@@ -5,10 +5,16 @@ import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Path
 import org.simpleframework.xml.Root
 
+class StationBoardResult {
+    @field:Element(name = "generatedAt") lateinit var generatedAt: String
+    @field:Element(name = "locationName") lateinit var locationName: String
+    @field:Element(name = "crs") lateinit var stationCode: String
+    @field:Element(name = "platformAvailable", required = false) var platformAvailable: Boolean? = null
+    @field:ElementList(name = "trainServices", required = false) var trainServices: List<TrainService>? = null
+}
+
 @Root(name = "service", strict = false)
 class TrainService {
-    @field:Element(name = "std", required = false) var std: String? = null
-    @field:Element(name = "etd", required = false) var etd: String? = null
     @field:Element(name = "platform", required = false) var platform: Int? = null
     @field:Element(name = "operator", required = false) var operator: String? = null
     @field:Element(name = "operatorCode", required = false) var operatorCode: String? = null
@@ -16,7 +22,18 @@ class TrainService {
     @field:Element(name = "serviceID", required = false) var serviceID: String? = null
     @field:Path("origin") @field:Element(name = "location") lateinit var origin: Location
     @field:Path("destination") @field:Element(name = "location") lateinit var destination: Location
-    @field:Path("subsequentCallingPoints") @field:ElementList(name = "callingPointList") lateinit var callingPoints: List<CallingPoint>
+    //departure
+    @field:Element(name = "std", required = false) var stDeparture: String? = null
+    @field:Element(name = "etd", required = false) var etDeparture: String? = null
+    @field:Path("subsequentCallingPoints") @field:ElementList(name = "callingPointList", required = false) var departureCallingPoints: List<CallingPoint>? = null
+    //arrival
+    @field:Element(name = "sta", required = false) var stArrival: String? = null
+    @field:Element(name = "eta", required = false) var etArrival: String? = null
+    @field:Path("previousCallingPoints") @field:ElementList(name = "callingPointList", required = false) var arrivalCallingPoints: List<CallingPoint>? = null
+
+    val st: String? get() = stDeparture ?: stArrival
+    val et: String? get() = etDeparture ?: etArrival
+    val callingPoints: List<CallingPoint>? get() = departureCallingPoints ?: arrivalCallingPoints
 }
 
 @Root(name = "location", strict = false)
@@ -31,5 +48,6 @@ class CallingPoint {
     @field:Element(name = "locationName") lateinit var locationName: String
     @field:Element(name = "crs") lateinit var stationCode: String
     @field:Element(name = "st") lateinit var time: String
-    @field:Element(name = "et") lateinit var timeDetail: String
+    @field:Element(name = "at", required = false) lateinit var timeDetailArrival: String
+    @field:Element(name = "et", required = false) lateinit var timeDetailDeparture: String
 }

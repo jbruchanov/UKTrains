@@ -7,7 +7,7 @@ internal const val NS_TYPES = "http://thalesgroup.com/RTTI/2013-11-28/Token/type
 internal const val NS_SOAP = "http://www.w3.org/2003/05/soap-envelope"
 
 @Root(name = "Envelope")
-@Namespace(prefix="soap", reference= NS_SOAP)
+@Namespace(prefix = "soap", reference = NS_SOAP)
 @NamespaceList(
     Namespace(reference = NS_LDB, prefix = "ldb"),
     Namespace(reference = NS_TYPES, prefix = "types")
@@ -35,15 +35,19 @@ class AccessToken(
     @field:Element(name = "TokenValue") var accessToken: String
 )
 
-@Namespace(reference= NS_SOAP)
+@Namespace(reference = NS_SOAP)
 class EnvelopeBody<T : Any>() {
 
     @field:Namespace(reference = NS_LDB)
     @field:ElementUnion(
         Element(name = "GetDepartureBoardRequest", type = DepartureBoardRequest::class),
-        Element(name = "GetDepartureBoardResponse", type = DepartureBoardResponse::class),
+        Element(name = "GetDepartureBoardResponse", type = BoardResponse::class),
         Element(name = "GetDepBoardWithDetailsRequest", type = DepartureBoardRequestWithDetails::class),
-        Element(name = "GetDepBoardWithDetailsResponse", type = DepartureBoardWithDetailsResponse::class)
+        Element(name = "GetDepBoardWithDetailsResponse", type = BoardResponse::class),
+        Element(name = "GetArrivalBoardRequest", type = ArrivalBoardRequest::class),
+        Element(name = "GetArrivalBoardResponse", type = BoardResponse::class),
+        Element(name = "GetArrBoardWithDetailsRequest", type = ArrivalBoardRequestWithDetails::class),
+        Element(name = "GetArrBoardWithDetailsResponse", type = BoardResponse::class)
     )
     lateinit var item: T
 

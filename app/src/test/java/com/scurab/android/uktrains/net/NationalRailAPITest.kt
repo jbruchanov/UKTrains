@@ -4,7 +4,6 @@ import com.scurab.android.uktrains.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.Assert.assertEquals
-import org.junit.Ignore
 import org.junit.Test
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
@@ -12,6 +11,7 @@ import java.util.concurrent.TimeUnit
 
 class NationalRailAPITest {
 
+    private val stationCode = "GNH"
     private val api: NationalRailAPI
 
     init {
@@ -39,22 +39,38 @@ class NationalRailAPITest {
     }
 
     @Test
-    @Ignore
     fun testRealDepartureBoardRequest() {
         val execute = api
-            .getDepartureBoard(DepartureBoardRequest("GNH", 5))
+            .getDepartureBoard(DepartureBoardRequest(stationCode))
             .execute()
         val body = execute.body()
-        assertEquals("GNH", body?.stationBoardResult?.stationCode)
+        assertEquals(stationCode, body?.stationBoardResult?.stationCode)
     }
 
     @Test
-    @Ignore
     fun testRealDepartureBoardWithDetailsRequest() {
         val execute = api
-            .getDepartureBoardWithDetails(DepartureBoardRequestWithDetails("GNH", 5))
+            .getDepartureBoardWithDetails(DepartureBoardRequestWithDetails(stationCode))
             .execute()
         val body = execute.body()
-        assertEquals("GNH", body?.stationBoardResult?.stationCode)
+        assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+    }
+
+    @Test
+    fun testRealArrivalBoardRequest() {
+        val execute = api
+            .getArrivalBoard(ArrivalBoardRequest(stationCode))
+            .execute()
+        val body = execute.body()
+        assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+    }
+
+    @Test
+    fun testRealArrivalBoardWithDetailsRequest() {
+        val execute = api
+            .getArrivalBoardWithDetails(ArrivalBoardRequestWithDetails(stationCode))
+            .execute()
+        val body = execute.body()
+        assertEquals(stationCode, body?.stationBoardResult?.stationCode)
     }
 }

@@ -3,7 +3,7 @@ package com.scurab.android.uktrains.net
 import androidx.annotation.IntRange
 import org.simpleframework.xml.*
 
-open class DepartureBoardRequest {
+abstract class BoardRequest {
     @field:Namespace(reference = NS_LDB) @field:Element(name = "crs") var stationCode: String
     @field:Namespace(reference = NS_LDB) @field:Element(name = "numRows") var rowsNumber: Int = 0
     @field:Namespace(reference = NS_LDB) @field:Element(name = "filterCrs", required = false) var filterStationCode: String? = null
@@ -18,3 +18,8 @@ open class DepartureBoardRequest {
         this.rowsNumber = rowsNumber
     }
 }
+
+class DepartureBoardRequest(stationCode: String, rowsNumber: Int = 10) : BoardRequest(stationCode, rowsNumber)
+class DepartureBoardRequestWithDetails(stationCode: String, rowsNumber: Int = 10) : BoardRequest(stationCode, rowsNumber)
+class ArrivalBoardRequest(stationCode: String, rowsNumber: Int = 10) : BoardRequest(stationCode, rowsNumber)
+class ArrivalBoardRequestWithDetails(stationCode: String, rowsNumber: Int = 10) : BoardRequest(stationCode, rowsNumber)
