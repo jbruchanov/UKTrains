@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="gap_normal">8dp</dimen>
+    <dimen name="text_time">24sp</dimen>
+    <dimen name="text_operator">16sp</dimen>
+</resources>

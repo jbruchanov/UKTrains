@@ -34,6 +34,8 @@ class TrainService {
     val st: String? get() = stDeparture ?: stArrival
     val et: String? get() = etDeparture ?: etArrival
     val callingPoints: List<CallingPoint>? get() = subsequentCallingPoints ?: previousCallingPoints
+
+    val journey : String get() = "${origin.locationName}->${destination.locationName}"
 }
 
 @Root(name = "location", strict = false)

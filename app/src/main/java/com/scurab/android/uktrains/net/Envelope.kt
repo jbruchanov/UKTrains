@@ -12,6 +12,7 @@ internal const val NS_SOAP = "http://www.w3.org/2003/05/soap-envelope"
     Namespace(reference = NS_LDB, prefix = "ldb"),
     Namespace(reference = NS_TYPES, prefix = "types")
 )
+@Order(elements = ["Header", "Body"])
 class Envelope<T : Any> {
     //must be before body
     @field:Namespace(reference = NS_SOAP)
