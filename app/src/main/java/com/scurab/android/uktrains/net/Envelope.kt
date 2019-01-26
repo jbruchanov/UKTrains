@@ -41,7 +41,9 @@ class EnvelopeBody<T : Any>() {
     @field:Namespace(reference = NS_LDB)
     @field:ElementUnion(
         Element(name = "GetDepartureBoardRequest", type = DepartureBoardRequest::class),
-        Element(name = "GetDepartureBoardResponse", type = DepartureBoardResponse::class)
+        Element(name = "GetDepartureBoardResponse", type = DepartureBoardResponse::class),
+        Element(name = "GetDepBoardWithDetailsRequest", type = DepartureBoardRequestWithDetails::class),
+        Element(name = "GetDepBoardWithDetailsResponse", type = DepartureBoardWithDetailsResponse::class)
     )
     lateinit var item: T
 

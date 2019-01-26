@@ -4,6 +4,7 @@ import com.scurab.android.uktrains.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.Assert.assertEquals
+import org.junit.Ignore
 import org.junit.Test
 import retrofit2.Retrofit
 import java.util.concurrent.TimeUnit
@@ -38,9 +39,20 @@ class NationalRailAPITest {
     }
 
     @Test
+    @Ignore
     fun testRealDepartureBoardRequest() {
         val execute = api
             .getDepartureBoard(DepartureBoardRequest("GNH", 5))
+            .execute()
+        val body = execute.body()
+        assertEquals("GNH", body?.stationBoardResult?.stationCode)
+    }
+
+    @Test
+    @Ignore
+    fun testRealDepartureBoardWithDetailsRequest() {
+        val execute = api
+            .getDepartureBoardWithDetails(DepartureBoardRequestWithDetails("GNH", 5))
             .execute()
         val body = execute.body()
         assertEquals("GNH", body?.stationBoardResult?.stationCode)

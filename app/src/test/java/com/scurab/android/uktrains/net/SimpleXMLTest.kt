@@ -1,6 +1,8 @@
 package com.scurab.android.uktrains.net
 
 import junit.framework.Assert
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.simpleframework.xml.convert.AnnotationStrategy
 import org.simpleframework.xml.core.Persister
@@ -32,13 +34,30 @@ class SimpleXMLTest {
 
     @Suppress("UNCHECKED_CAST")
     @Test
-    fun testDeserialization() {
-        val xml = File("./src/test/res/sample_xml1.xml").readText()
+    fun testDeserializationGetDepartureBoard() {
+        val xml = File("./src/test/res/sample_get_departure_board.xml").readText()
         val clz: Class<Envelope<DepartureBoardResponse>> =
             Envelope::class.java as Class<Envelope<DepartureBoardResponse>>
         val envelope = persister.read(clz, xml, false)
         envelope.body.item.apply {
             Assert.assertNotNull(this.stationBoardResult)
+        }
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    @Test
+    fun testDeserializationGetDepartureBoardWithDetails() {
+        val xml = File("./src/test/res/sample_get_departure_board_with_details.xml").readText()
+        val clz: Class<Envelope<DepartureBoardWithDetailsResponse>> =
+            Envelope::class.java as Class<Envelope<DepartureBoardWithDetailsResponse>>
+        val envelope = persister.read(clz, xml, false)
+        envelope.body.item.apply {
+            Assert.assertNotNull(this.stationBoardResult)
+            this.stationBoardResult?.trainServices?.first()?.let {
+                assertNotNull(it)
+                assertTrue(it.callingPoints.isNotEmpty())
+                assertNotNull(it.callingPoints.first().locationName)
+            }
         }
     }
 }
