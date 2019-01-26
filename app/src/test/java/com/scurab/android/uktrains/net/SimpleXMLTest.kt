@@ -55,8 +55,8 @@ class SimpleXMLTest {
             Assert.assertNotNull(this.stationBoardResult)
             this.stationBoardResult?.trainServices?.first()?.let {
                 assertNotNull(it)
-                assertTrue(it.departureCallingPoints?.isNotEmpty() ?: false)
-                assertNotNull(it.departureCallingPoints?.first()?.locationName)
+                assertTrue(it.subsequentCallingPoints?.isNotEmpty() ?: false)
+                assertNotNull(it.subsequentCallingPoints?.first()?.locationName)
             }
         }
     }

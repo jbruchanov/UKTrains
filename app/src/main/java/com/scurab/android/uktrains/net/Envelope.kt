@@ -47,7 +47,9 @@ class EnvelopeBody<T : Any>() {
         Element(name = "GetArrivalBoardRequest", type = ArrivalBoardRequest::class),
         Element(name = "GetArrivalBoardResponse", type = BoardResponse::class),
         Element(name = "GetArrBoardWithDetailsRequest", type = ArrivalBoardRequestWithDetails::class),
-        Element(name = "GetArrBoardWithDetailsResponse", type = BoardResponse::class)
+        Element(name = "GetArrBoardWithDetailsResponse", type = BoardResponse::class),
+        Element(name = "GetServiceDetailsRequest", type = ServiceDetailsRequest::class),
+        Element(name = "GetServiceDetailsResponse", type = ServiceDetailsResponse::class)
     )
     lateinit var item: T
 

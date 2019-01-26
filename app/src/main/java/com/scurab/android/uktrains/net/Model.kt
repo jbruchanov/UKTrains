@@ -25,15 +25,15 @@ class TrainService {
     //departure
     @field:Element(name = "std", required = false) var stDeparture: String? = null
     @field:Element(name = "etd", required = false) var etDeparture: String? = null
-    @field:Path("subsequentCallingPoints") @field:ElementList(name = "callingPointList", required = false) var departureCallingPoints: List<CallingPoint>? = null
+    @field:Path("subsequentCallingPoints") @field:ElementList(name = "callingPointList", required = false) var subsequentCallingPoints: List<CallingPoint>? = null
     //arrival
     @field:Element(name = "sta", required = false) var stArrival: String? = null
     @field:Element(name = "eta", required = false) var etArrival: String? = null
-    @field:Path("previousCallingPoints") @field:ElementList(name = "callingPointList", required = false) var arrivalCallingPoints: List<CallingPoint>? = null
+    @field:Path("previousCallingPoints") @field:ElementList(name = "callingPointList", required = false) var previousCallingPoints: List<CallingPoint>? = null
 
     val st: String? get() = stDeparture ?: stArrival
     val et: String? get() = etDeparture ?: etArrival
-    val callingPoints: List<CallingPoint>? get() = departureCallingPoints ?: arrivalCallingPoints
+    val callingPoints: List<CallingPoint>? get() = subsequentCallingPoints ?: previousCallingPoints
 }
 
 @Root(name = "location", strict = false)
@@ -50,4 +50,20 @@ class CallingPoint {
     @field:Element(name = "st") lateinit var time: String
     @field:Element(name = "at", required = false) lateinit var timeDetailArrival: String
     @field:Element(name = "et", required = false) lateinit var timeDetailDeparture: String
+}
+
+class ServiceDetailsResult {
+    @field:Element(name = "generatedAt") lateinit var generatedAt: String
+    @field:Element(name = "serviceType") lateinit var serviceType: String
+    @field:Element(name = "locationName") lateinit var locationName: String
+    @field:Element(name = "crs") lateinit var stationCode:String
+    @field:Element(name = "operator") lateinit var operator: String
+    @field:Element(name = "operatorCode") lateinit var operatorCode: String
+    @field:Element(name = "platform", required = false) var platform: Int? = null
+    @field:Element(name = "sta") lateinit var sta: String
+    @field:Element(name = "ata") lateinit var ata: String
+    @field:Element(name = "std") lateinit var std: String
+    @field:Element(name = "atd") lateinit var atd: String
+    @field:Path("previousCallingPoints") @field:ElementList(name = "callingPointList", required = false) var previousCallingPoints: List<CallingPoint>? = null
+    @field:Path("subsequentCallingPoints") @field:ElementList(name = "callingPointList", required = false) var subsequentCallingPoints: List<CallingPoint>? = null
 }

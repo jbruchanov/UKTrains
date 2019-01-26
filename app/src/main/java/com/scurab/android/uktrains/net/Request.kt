@@ -23,3 +23,8 @@ class DepartureBoardRequest(stationCode: String, rowsNumber: Int = 10) : BoardRe
 class DepartureBoardRequestWithDetails(stationCode: String, rowsNumber: Int = 10) : BoardRequest(stationCode, rowsNumber)
 class ArrivalBoardRequest(stationCode: String, rowsNumber: Int = 10) : BoardRequest(stationCode, rowsNumber)
 class ArrivalBoardRequestWithDetails(stationCode: String, rowsNumber: Int = 10) : BoardRequest(stationCode, rowsNumber)
+
+
+class ServiceDetailsRequest(
+    @field:Namespace(reference = NS_LDB) @field:Element(name = "serviceID") var serviceId: String
+)

@@ -3,9 +3,10 @@ package com.scurab.android.uktrains.net
 import com.scurab.android.uktrains.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.junit.Assert.assertEquals
+import org.junit.Assert.*
 import org.junit.Test
 import retrofit2.Retrofit
+import java.lang.NullPointerException
 import java.util.concurrent.TimeUnit
 
 
@@ -72,5 +73,25 @@ class NationalRailAPITest {
             .execute()
         val body = execute.body()
         assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+    }
+
+
+    @Test
+    fun testRealGetServiceDetails() {
+        val execute = api
+            .getDepartureBoard(DepartureBoardRequest(stationCode))
+            .execute()
+        val serviceId = execute.body()?.stationBoardResult?.trainServices?.first()?.serviceID
+        serviceId ?: throw NullPointerException("ServiceId not found")
+        val serviceDetails = api.getServiceDetials(ServiceDetailsRequest(serviceId))
+            .execute()
+            .body()
+            ?.serviceDetailsResult
+
+        serviceDetails?.apply {
+            assertNotNull(stationCode)
+            assertTrue(previousCallingPoints?.isNotEmpty() ?: false)
+            assertTrue(subsequentCallingPoints?.isNotEmpty() ?: false)
+        } ?: fail("null serviceDetails")
     }
 }
