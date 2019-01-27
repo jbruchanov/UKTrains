@@ -23,16 +23,16 @@ class TrainService {
     @field:Path("origin") @field:Element(name = "location") lateinit var origin: Location
     @field:Path("destination") @field:Element(name = "location") lateinit var destination: Location
     //departure
-    @field:Element(name = "std", required = false) var stDeparture: String? = null
-    @field:Element(name = "etd", required = false) var etDeparture: String? = null
+    @field:Element(name = "std", required = false) var schedTimeDeparture: String? = null
+    @field:Element(name = "etd", required = false) var estTimeDeparture: String? = null
     @field:Path("subsequentCallingPoints") @field:ElementList(name = "callingPointList", required = false) var subsequentCallingPoints: List<CallingPoint>? = null
     //arrival
-    @field:Element(name = "sta", required = false) var stArrival: String? = null
-    @field:Element(name = "eta", required = false) var etArrival: String? = null
+    @field:Element(name = "sta", required = false) var schedTimeArrival: String? = null
+    @field:Element(name = "eta", required = false) var estTimeArrival: String? = null
     @field:Path("previousCallingPoints") @field:ElementList(name = "callingPointList", required = false) var previousCallingPoints: List<CallingPoint>? = null
 
-    val st: String? get() = stDeparture ?: stArrival
-    val et: String? get() = etDeparture ?: etArrival
+    val schedTime: String? get() = schedTimeDeparture ?: schedTimeArrival
+    val estTime: String? get() = estTimeDeparture ?: estTimeArrival
     val callingPoints: List<CallingPoint>? get() = subsequentCallingPoints ?: previousCallingPoints
 }
 
@@ -47,9 +47,9 @@ class Location {
 class CallingPoint {
     @field:Element(name = "locationName") lateinit var locationName: String
     @field:Element(name = "crs") lateinit var stationCode: String
-    @field:Element(name = "st") lateinit var time: String
-    @field:Element(name = "at", required = false) lateinit var timeDetailArrival: String
-    @field:Element(name = "et", required = false) lateinit var timeDetailDeparture: String
+    @field:Element(name = "st") lateinit var scheduledTime: String
+    @field:Element(name = "at", required = false) lateinit var actualTime: String
+    @field:Element(name = "et", required = false) lateinit var estimatedTime: String
 }
 
 class ServiceDetailsResult {
