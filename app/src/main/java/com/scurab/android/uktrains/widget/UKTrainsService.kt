@@ -1,6 +1,5 @@
 package com.scurab.android.uktrains.widget
 
-import android.app.Activity
 import android.app.Service
 import android.appwidget.AppWidgetManager
 import android.content.ComponentName
@@ -9,7 +8,6 @@ import android.content.Intent
 import android.os.*
 import android.widget.RemoteViews
 import com.scurab.android.uktrains.BuildConfig
-import com.scurab.android.uktrains.ConfigureActivity
 import com.scurab.android.uktrains.R
 import com.scurab.android.uktrains.net.DepartureBoardRequest
 import com.scurab.android.uktrains.net.NationalRailAPI
@@ -80,7 +78,7 @@ class UKTrainsService : Service() {
                                 R.layout.item_tain_service
                             )
                             val trainService = trainServices[counter % trainServices.size]
-                            views.setTextViewText(R.id.time, trainService.stDeparture)
+                            views.setTextViewText(R.id.time, trainService.schedTimeDeparture)
                             views.setTextViewText(R.id.operator, trainService.operator)
                             views.setTextViewText(R.id.journey, trainService.journey)
                             wm.updateAppWidget(widgetId, views)
