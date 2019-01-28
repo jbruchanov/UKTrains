@@ -10,6 +10,9 @@
             android:hint="@string/name_station_or_code">
 
         <com.google.android.material.textfield.TextInputEditText
+                android:maxLines="1"
+                android:inputType="text"
+                android:importantForAutofill="no"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
 
