@@ -3,4 +3,6 @@
     <dimen name="gap_normal">8dp</dimen>
     <dimen name="text_time">24sp</dimen>
     <dimen name="text_operator">16sp</dimen>
+    <dimen name="button_min_height">48dp</dimen>
+    <dimen name="text_item_station">24sp</dimen>
 </resources>
