@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">UKTrains</string>
+    <string name="name_station_or_code">Type namestation or code</string>
 </resources>
