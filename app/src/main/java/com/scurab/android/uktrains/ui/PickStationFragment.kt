@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.IntRange
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.scurab.android.uktrains.R
 import com.scurab.android.uktrains.model.TrainStation
+import com.scurab.android.uktrains.util.ise
+import com.scurab.android.uktrains.util.npe
+import com.scurab.android.uktrains.widget.config.ConfigureWidgetViewModel
 import com.scurab.android.uktrains.widget.textTextWithBoldLetters
 import kotlinx.android.synthetic.main.fragment_pick_station.*
 import java.nio.charset.Charset
@@ -18,6 +23,9 @@ class PickStationFragment : BaseFragment() {
 
     private lateinit var pickStationAdapter: PickStationAdapter
     private var trainStations: List<TrainStation>? = null
+    private val viewModel by lazy {
+        ViewModelProviders.of(requireActivity())[ConfigureWidgetViewModel::class.java]
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_pick_station, container, false)
@@ -31,7 +39,16 @@ class PickStationFragment : BaseFragment() {
                 .map { TrainStation.fromCSV(it) }
         }
 
+        val dataType = arguments?.getInt(TYPE) ?: ise("Undefined argument ${TYPE}")
         pickStationAdapter = PickStationAdapter()
+        pickStationAdapter.onItemClickedListener = {
+            if (dataType == TYPE_FROM) {
+                viewModel.origin = it
+            } else {
+                viewModel.destination = it
+            }
+            popBackStack()
+        }
         pickStationAdapter.items = trainStations
         recyclerview.adapter = pickStationAdapter
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
@@ -39,11 +56,30 @@ class PickStationFragment : BaseFragment() {
             pickStationAdapter.filterExpr = it.toString()
         }
     }
+
+    companion object {
+        @JvmStatic
+        private val TYPE = "TYPE"
+
+        @JvmStatic
+        val TYPE_FROM = 0
+        val TYPE_TO = 1
+
+        @JvmStatic
+        fun newInstance(@IntRange(from = 0, to = 1) type: Int): PickStationFragment {
+            return PickStationFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(TYPE, type)
+                }
+            }
+        }
+    }
 }
 
 class PickStationAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val emptyIntArray = intArrayOf()
+    var onItemClickedListener: ((TrainStation) -> Unit)? = null
 
     var filterExpr: String? = null
         set(value) {
@@ -98,7 +134,14 @@ class PickStationAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return object : RecyclerView.ViewHolder(layoutInflater.inflate(R.layout.item_station, parent, false)) {}
+        return object : RecyclerView.ViewHolder(layoutInflater.inflate(R.layout.item_station, parent, false)) {
+            init {
+                itemView.setOnClickListener {
+                    val trainStation = filteredItems?.get(adapterPosition)?.first
+                    onItemClickedListener?.invoke(trainStation ?: npe("Null trainstation"))
+                }
+            }
+        }
     }
 
     override fun getItemCount(): Int {
@@ -107,7 +150,7 @@ class PickStationAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         filteredItems?.get(position)?.let { (ts, indexes) ->
-            (holder.itemView as? TextView)?.textTextWithBoldLetters("${ts.name} [${ts.code}]" , indexes)
+            (holder.itemView as? TextView)?.textTextWithBoldLetters("${ts.name} [${ts.code}]", indexes)
         }
     }
 }

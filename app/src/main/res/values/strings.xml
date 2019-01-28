@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">UKTrains</string>
     <string name="name_station_or_code">Type namestation or code</string>
+    <string name="origin">Origin</string>
+    <string name="pick_station">Pick station</string>
+    <string name="destination">Destination (optional)</string>
+    <string name="finish">Finish</string>
 </resources>

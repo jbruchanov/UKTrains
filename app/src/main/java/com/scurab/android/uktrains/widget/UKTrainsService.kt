@@ -97,7 +97,7 @@ class UKTrainsService : Service() {
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
         // For each start request, send a message to start a job and deliver the
-        // start ID so we know which request we're stopping when we finish the job
+        // start ID so we know which request we're stopping when we popBackStack the job
 
 
         // If we get killed, after returning from here, restart
