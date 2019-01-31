@@ -1,6 +1,8 @@
 package com.scurab.android.uktrains.net
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.scurab.android.uktrains.BuildConfig
+import kotlinx.coroutines.runBlocking
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.junit.Assert.*
@@ -33,6 +35,7 @@ class NationalRailAPITest {
         val token = BuildConfig.API_TOKEN
         api = Retrofit.Builder()
             .baseUrl("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/")
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(UKTrainConverterFactory(token))
             .client(client)
             .build()
@@ -41,57 +44,62 @@ class NationalRailAPITest {
 
     @Test
     fun testRealDepartureBoardRequest() {
-        val execute = api
-            .getDepartureBoard(DepartureBoardRequest(stationCode))
-            .execute()
-        val body = execute.body()
-        assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+        runBlocking {
+            val body = api
+                .getDepartureBoardAsync(DepartureBoardRequest(stationCode))
+                .await()
+            assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+        }
     }
 
     @Test
     fun testRealDepartureBoardWithDetailsRequest() {
-        val execute = api
-            .getDepartureBoardWithDetails(DepartureBoardRequestWithDetails(stationCode))
-            .execute()
-        val body = execute.body()
-        assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+        runBlocking {
+            val body = api
+                .getDepartureBoardWithDetailsAsync(DepartureBoardRequestWithDetails(stationCode))
+                .await()
+            assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+        }
     }
 
     @Test
     fun testRealArrivalBoardRequest() {
-        val execute = api
-            .getArrivalBoard(ArrivalBoardRequest(stationCode))
-            .execute()
-        val body = execute.body()
-        assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+        runBlocking {
+            val body = api
+                .getArrivalBoardAsync(ArrivalBoardRequest(stationCode))
+                .await()
+            assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+        }
     }
 
     @Test
     fun testRealArrivalBoardWithDetailsRequest() {
-        val execute = api
-            .getArrivalBoardWithDetails(ArrivalBoardRequestWithDetails(stationCode))
-            .execute()
-        val body = execute.body()
-        assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+        runBlocking {
+            val body = api
+                .getArrivalBoardWithDetailsAsync(ArrivalBoardRequestWithDetails(stationCode))
+                .await()
+            assertEquals(stationCode, body?.stationBoardResult?.stationCode)
+        }
     }
 
 
     @Test
     fun testRealGetServiceDetails() {
-        val execute = api
-            .getDepartureBoard(DepartureBoardRequest(stationCode))
-            .execute()
-        val serviceId = execute.body()?.stationBoardResult?.trainServices?.first()?.serviceID
-        serviceId ?: throw NullPointerException("ServiceId not found")
-        val serviceDetails = api.getServiceDetials(ServiceDetailsRequest(serviceId))
-            .execute()
-            .body()
-            ?.serviceDetailsResult
+        runBlocking {
+            val board = api
+                .getDepartureBoardAsync(DepartureBoardRequest(stationCode))
+                .await()
+            val serviceId = board?.stationBoardResult?.trainServices?.first()?.serviceID
+            serviceId ?: throw NullPointerException("ServiceId not found")
+            val serviceDetails = api.getServiceDetailsAsync(ServiceDetailsRequest(serviceId))
+                .await()
+                .serviceDetailsResult
 
-        serviceDetails?.apply {
-            assertNotNull(stationCode)
-            assertTrue(previousCallingPoints?.isNotEmpty() ?: false)
-            assertTrue(subsequentCallingPoints?.isNotEmpty() ?: false)
-        } ?: fail("null serviceDetails")
+            serviceDetails?.apply {
+                assertNotNull(stationCode)
+                assertTrue(previousCallingPoints?.isNotEmpty() ?: false)
+                assertTrue(subsequentCallingPoints?.isNotEmpty() ?: false)
+            } ?: fail("null serviceDetails")
+        }
     }
 }

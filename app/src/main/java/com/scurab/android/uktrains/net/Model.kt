@@ -61,7 +61,7 @@ class ServiceDetailsResult {
     @field:Element(name = "operatorCode") lateinit var operatorCode: String
     @field:Element(name = "platform", required = false) var platform: Int? = null
     @field:Element(name = "sta") lateinit var sta: String
-    @field:Element(name = "ata") lateinit var ata: String
+    @field:Element(name = "ata", required = false) var ata: String? = null
     @field:Element(name = "std") lateinit var std: String
     @field:Element(name = "atd") lateinit var atd: String
     @field:Path("previousCallingPoints") @field:ElementList(name = "callingPointList", required = false) var previousCallingPoints: List<CallingPoint>? = null
