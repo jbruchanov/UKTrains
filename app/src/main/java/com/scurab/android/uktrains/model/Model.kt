@@ -43,3 +43,7 @@ data class TrainStation(
         }
     }
 }
+
+interface HasSavingId {
+    var id : Long?
+}

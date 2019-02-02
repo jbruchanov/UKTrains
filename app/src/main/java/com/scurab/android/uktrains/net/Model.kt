@@ -4,6 +4,7 @@ import org.simpleframework.xml.Element
 import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Path
 import org.simpleframework.xml.Root
+import java.lang.StringBuilder
 
 class StationBoardResult {
     @field:Element(name = "generatedAt") lateinit var generatedAt: String
@@ -11,6 +12,8 @@ class StationBoardResult {
     @field:Element(name = "crs") lateinit var stationCode: String
     @field:Element(name = "platformAvailable", required = false) var platformAvailable: Boolean? = null
     @field:ElementList(name = "trainServices", required = false) var trainServices: List<TrainService>? = null
+
+    var saveId : Long? = null
 }
 
 @Root(name = "service", strict = false)
@@ -20,8 +23,8 @@ class TrainService {
     @field:Element(name = "operatorCode", required = false) var operatorCode: String? = null
     @field:Element(name = "serviceType", required = false) var serviceType: String? = null
     @field:Element(name = "serviceID", required = false) var serviceID: String? = null
-    @field:Path("origin") @field:Element(name = "location") lateinit var origin: Location
-    @field:Path("destination") @field:Element(name = "location") lateinit var destination: Location
+    @field:ElementList(name = "origin") lateinit var origin: List<Location>
+    @field:ElementList(name = "destination") lateinit var destination: List<Location>
     //departure
     @field:Element(name = "std", required = false) var schedTimeDeparture: String? = null
     @field:Element(name = "etd", required = false) var estTimeDeparture: String? = null
@@ -34,6 +37,7 @@ class TrainService {
     val schedTime: String? get() = schedTimeDeparture ?: schedTimeArrival
     val estTime: String? get() = estTimeDeparture ?: estTimeArrival
     val callingPoints: List<CallingPoint>? get() = subsequentCallingPoints ?: previousCallingPoints
+    val journey : String get() = "${origin.names()} -> ${destination.names()}"
 }
 
 @Root(name = "location", strict = false)
@@ -41,6 +45,17 @@ class Location {
     @field:Element(name = "locationName") lateinit var locationName: String
     @field:Element(name = "crs") lateinit var stationCode: String
     @field:Element(name = "via", required = false) var via: String? = null
+}
+
+fun Collection<Location>.names(): String {
+    val sb = StringBuilder()
+    forEach {
+        sb.append("${it.locationName}, ")
+    }
+    if (sb.isNotEmpty()) {
+        sb.setLength(sb.length - 2)
+    }
+    return sb.toString()
 }
 
 @Root(name = "callingPoint", strict = false)

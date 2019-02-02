@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="horizontal"
+              android:background="@drawable/background_card_top"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <TextView android:id="@+id/title"
+              tools:text="London Bridge"
+              android:background="@drawable/item_rectangular_background"
+              tools:paddingLeft="@dimen/gap_large"
+              tools:paddingRight="@dimen/gap_large"
+              android:gravity="center_vertical"
+              android:textSize="@dimen/text_item_board_header"
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:layout_height="wrap_content"/>
+    <ImageButton
+            android:id="@+id/remove"
+            android:background="@drawable/item_circular_background"
+            android:src="@drawable/ic_close_black_24dp"
+            android:minHeight="@dimen/item_header_remove_size"
+            android:minWidth="@dimen/item_header_remove_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+</LinearLayout>
+

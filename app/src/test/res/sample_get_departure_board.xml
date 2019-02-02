@@ -10,209 +10,225 @@
                                    xmlns:lt5="http://thalesgroup.com/RTTI/2016-02-16/ldb/types"
                                    xmlns:lt2="http://thalesgroup.com/RTTI/2014-02-20/ldb/types"
                                    xmlns:lt3="http://thalesgroup.com/RTTI/2015-05-14/ldb/types">
-                <lt4:generatedAt>2019-01-26T13:52:42.6538129+00:00</lt4:generatedAt>
-                <lt4:locationName>Greenhithe for Bluewater</lt4:locationName>
-                <lt4:crs>GNH</lt4:crs>
+                <lt4:generatedAt>2019-02-02T09:43:47.1365585+00:00</lt4:generatedAt>
+                <lt4:locationName>London Bridge</lt4:locationName>
+                <lt4:crs>LBG</lt4:crs>
+                <lt4:nrccMessages>
+                    <lt:message>The Met Office has issued several yellow &amp;amp; amber weather warnings across the
+                        Govia Thameslink Railway network until the end of the day. More information can be found in &lt;A
+                        href="http://nationalrail.co.uk/service_disruptions/212357.aspx"&gt;Latest Travel News&lt;/A&gt;.
+                    </lt:message>
+                    <lt:message>Trains through Cricklewood may be delayed by up to 15 minutes. More information can be
+                        found in &lt;A href="http://nationalrail.co.uk/service_disruptions/212813.aspx"&gt;Latest Travel
+                        News&lt;/A&gt;
+                    </lt:message>
+                </lt4:nrccMessages>
                 <lt4:platformAvailable>true</lt4:platformAvailable>
                 <lt5:trainServices>
                     <lt5:service>
-                        <lt4:std>13:56</lt4:std>
+                        <lt4:std>09:43</lt4:std>
                         <lt4:etd>On time</lt4:etd>
                         <lt4:platform>1</lt4:platform>
                         <lt4:operator>Southeastern</lt4:operator>
                         <lt4:operatorCode>SE</lt4:operatorCode>
                         <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>nqaKDZBp4TgUJG1ZmL1Vhg==</lt4:serviceID>
+                        <lt4:serviceID>ztfA+EIzXaLuHxS4J1Wstw==</lt4:serviceID>
                         <lt5:origin>
                             <lt4:location>
-                                <lt4:locationName>Gravesend</lt4:locationName>
-                                <lt4:crs>GRV</lt4:crs>
+                                <lt4:locationName>London Cannon Street</lt4:locationName>
+                                <lt4:crs>CST</lt4:crs>
                             </lt4:location>
                         </lt5:origin>
                         <lt5:destination>
                             <lt4:location>
-                                <lt4:locationName>London Victoria</lt4:locationName>
-                                <lt4:crs>VIC</lt4:crs>
-                                <lt4:via>via Bexleyheath</lt4:via>
+                                <lt4:locationName>Crayford</lt4:locationName>
+                                <lt4:crs>CRY</lt4:crs>
                             </lt4:location>
                         </lt5:destination>
                     </lt5:service>
                     <lt5:service>
-                        <lt4:std>14:00</lt4:std>
-                        <lt4:etd>14:02</lt4:etd>
+                        <lt4:std>09:44</lt4:std>
+                        <lt4:etd>On time</lt4:etd>
+                        <lt4:operator>Southern</lt4:operator>
+                        <lt4:operatorCode>SN</lt4:operatorCode>
+                        <lt4:serviceType>train</lt4:serviceType>
+                        <lt4:serviceID>5VdjiCeo60SFZEYmE7YUvQ==</lt4:serviceID>
+                        <lt5:origin>
+                            <lt4:location>
+                                <lt4:locationName>London Bridge</lt4:locationName>
+                                <lt4:crs>LBG</lt4:crs>
+                            </lt4:location>
+                        </lt5:origin>
+                        <lt5:destination>
+                            <lt4:location>
+                                <lt4:locationName>Caterham</lt4:locationName>
+                                <lt4:crs>CAT</lt4:crs>
+                            </lt4:location>
+                        </lt5:destination>
+                    </lt5:service>
+                    <lt5:service>
+                        <lt4:std>09:44</lt4:std>
+                        <lt4:etd>On time</lt4:etd>
+                        <lt4:platform>3</lt4:platform>
+                        <lt4:operator>Southeastern</lt4:operator>
+                        <lt4:operatorCode>SE</lt4:operatorCode>
+                        <lt4:serviceType>train</lt4:serviceType>
+                        <lt4:serviceID>X9JSL4ieifTVO5uaVUCHWQ==</lt4:serviceID>
+                        <lt5:origin>
+                            <lt4:location>
+                                <lt4:locationName>Orpington</lt4:locationName>
+                                <lt4:crs>ORP</lt4:crs>
+                            </lt4:location>
+                        </lt5:origin>
+                        <lt5:destination>
+                            <lt4:location>
+                                <lt4:locationName>London Cannon Street</lt4:locationName>
+                                <lt4:crs>CST</lt4:crs>
+                            </lt4:location>
+                        </lt5:destination>
+                    </lt5:service>
+                    <lt5:service>
+                        <lt4:std>09:45</lt4:std>
+                        <lt4:etd>On time</lt4:etd>
+                        <lt4:platform>9</lt4:platform>
+                        <lt4:operator>Southeastern</lt4:operator>
+                        <lt4:operatorCode>SE</lt4:operatorCode>
+                        <lt4:serviceType>train</lt4:serviceType>
+                        <lt4:serviceID>Nsj+U+Q/rXGRCpuVJNDu6A==</lt4:serviceID>
+                        <lt5:origin>
+                            <lt4:location>
+                                <lt4:locationName>Dartford</lt4:locationName>
+                                <lt4:crs>DFD</lt4:crs>
+                            </lt4:location>
+                        </lt5:origin>
+                        <lt5:destination>
+                            <lt4:location>
+                                <lt4:locationName>London Charing Cross</lt4:locationName>
+                                <lt4:crs>CHX</lt4:crs>
+                            </lt4:location>
+                        </lt5:destination>
+                    </lt5:service>
+                    <lt5:service>
+                        <lt4:std>09:46</lt4:std>
+                        <lt4:etd>On time</lt4:etd>
+                        <lt4:platform>6</lt4:platform>
+                        <lt4:operator>Southeastern</lt4:operator>
+                        <lt4:operatorCode>SE</lt4:operatorCode>
+                        <lt4:serviceType>train</lt4:serviceType>
+                        <lt4:serviceID>HBMfg9F1jW9gv4ONXMTWcw==</lt4:serviceID>
+                        <lt5:origin>
+                            <lt4:location>
+                                <lt4:locationName>London Charing Cross</lt4:locationName>
+                                <lt4:crs>CHX</lt4:crs>
+                            </lt4:location>
+                        </lt5:origin>
+                        <lt5:destination>
+                            <lt4:location>
+                                <lt4:locationName>Hayes (Kent)</lt4:locationName>
+                                <lt4:crs>HYS</lt4:crs>
+                            </lt4:location>
+                        </lt5:destination>
+                    </lt5:service>
+                    <lt5:service>
+                        <lt4:std>09:47</lt4:std>
+                        <lt4:etd>On time</lt4:etd>
                         <lt4:platform>2</lt4:platform>
                         <lt4:operator>Southeastern</lt4:operator>
                         <lt4:operatorCode>SE</lt4:operatorCode>
                         <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>Z9WZZF6U31YtT+I158lJVQ==</lt4:serviceID>
+                        <lt4:serviceID>93vUbAxu5i8coRSPdyK3KQ==</lt4:serviceID>
                         <lt5:origin>
                             <lt4:location>
-                                <lt4:locationName>London Victoria</lt4:locationName>
-                                <lt4:crs>VIC</lt4:crs>
+                                <lt4:locationName>Slade Green</lt4:locationName>
+                                <lt4:crs>SGR</lt4:crs>
                             </lt4:location>
                         </lt5:origin>
                         <lt5:destination>
                             <lt4:location>
-                                <lt4:locationName>Gravesend</lt4:locationName>
-                                <lt4:crs>GRV</lt4:crs>
+                                <lt4:locationName>London Cannon Street</lt4:locationName>
+                                <lt4:crs>CST</lt4:crs>
                             </lt4:location>
                         </lt5:destination>
                     </lt5:service>
                     <lt5:service>
-                        <lt4:std>14:08</lt4:std>
+                        <lt4:std>09:47</lt4:std>
                         <lt4:etd>On time</lt4:etd>
-                        <lt4:platform>1</lt4:platform>
-                        <lt4:operator>Thameslink</lt4:operator>
-                        <lt4:operatorCode>TL</lt4:operatorCode>
+                        <lt4:platform>12</lt4:platform>
+                        <lt4:operator>Southern</lt4:operator>
+                        <lt4:operatorCode>SN</lt4:operatorCode>
                         <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>DI5si+4dRGGwRZfaX/UGrg==</lt4:serviceID>
+                        <lt4:serviceID>IDEAx2BCbeXKfVdzE0XGEQ==</lt4:serviceID>
                         <lt5:origin>
                             <lt4:location>
-                                <lt4:locationName>Rainham (Kent)</lt4:locationName>
-                                <lt4:crs>RAI</lt4:crs>
+                                <lt4:locationName>London Bridge</lt4:locationName>
+                                <lt4:crs>LBG</lt4:crs>
                             </lt4:location>
                         </lt5:origin>
                         <lt5:destination>
+                            <lt4:location>
+                                <lt4:locationName>Caterham</lt4:locationName>
+                                <lt4:crs>CAT</lt4:crs>
+                            </lt4:location>
+                            <lt4:location>
+                                <lt4:locationName>Tattenham Corner</lt4:locationName>
+                                <lt4:crs>TAT</lt4:crs>
+                            </lt4:location>
+                        </lt5:destination>
+                    </lt5:service>
+                    <lt5:service>
+                        <lt4:std>09:48</lt4:std>
+                        <lt4:etd>On time</lt4:etd>
+                        <lt4:platform>4</lt4:platform>
+                        <lt4:operator>Thameslink</lt4:operator>
+                        <lt4:operatorCode>TL</lt4:operatorCode>
+                        <lt4:serviceType>train</lt4:serviceType>
+                        <lt4:serviceID>vOyyu44ydM/6YCNSQfEVMg==</lt4:serviceID>
+                        <lt5:rsid>TL340500</lt5:rsid>
+                        <lt5:origin>
                             <lt4:location>
                                 <lt4:locationName>Kentish Town</lt4:locationName>
                                 <lt4:crs>KTN</lt4:crs>
                             </lt4:location>
+                        </lt5:origin>
+                        <lt5:destination>
+                            <lt4:location>
+                                <lt4:locationName>Dartford</lt4:locationName>
+                                <lt4:crs>DFD</lt4:crs>
+                                <lt4:via>via Greenwich &amp; Woolwich Arsenal</lt4:via>
+                            </lt4:location>
                         </lt5:destination>
                     </lt5:service>
                     <lt5:service>
-                        <lt4:std>14:14</lt4:std>
+                        <lt4:std>09:48</lt4:std>
                         <lt4:etd>On time</lt4:etd>
-                        <lt4:platform>1</lt4:platform>
+                        <lt4:platform>9</lt4:platform>
                         <lt4:operator>Southeastern</lt4:operator>
                         <lt4:operatorCode>SE</lt4:operatorCode>
                         <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>0SuMgCZx8mz1Vs1k2wD/vw==</lt4:serviceID>
+                        <lt4:serviceID>yFroMhX31yyrOGovaM34LQ==</lt4:serviceID>
+                        <lt5:rsid>SE002000</lt5:rsid>
                         <lt5:origin>
                             <lt4:location>
-                                <lt4:locationName>Gravesend</lt4:locationName>
-                                <lt4:crs>GRV</lt4:crs>
+                                <lt4:locationName>Orpington</lt4:locationName>
+                                <lt4:crs>ORP</lt4:crs>
                             </lt4:location>
                         </lt5:origin>
                         <lt5:destination>
                             <lt4:location>
                                 <lt4:locationName>London Charing Cross</lt4:locationName>
                                 <lt4:crs>CHX</lt4:crs>
-                                <lt4:via>via Sidcup</lt4:via>
                             </lt4:location>
                         </lt5:destination>
                     </lt5:service>
                     <lt5:service>
-                        <lt4:std>14:17</lt4:std>
+                        <lt4:std>09:49</lt4:std>
                         <lt4:etd>On time</lt4:etd>
-                        <lt4:platform>2</lt4:platform>
+                        <lt4:platform>7</lt4:platform>
                         <lt4:operator>Southeastern</lt4:operator>
                         <lt4:operatorCode>SE</lt4:operatorCode>
                         <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>urc3Kj71lHwytYVwA5ThXg==</lt4:serviceID>
-                        <lt5:origin>
-                            <lt4:location>
-                                <lt4:locationName>London Charing Cross</lt4:locationName>
-                                <lt4:crs>CHX</lt4:crs>
-                            </lt4:location>
-                        </lt5:origin>
-                        <lt5:destination>
-                            <lt4:location>
-                                <lt4:locationName>Gravesend</lt4:locationName>
-                                <lt4:crs>GRV</lt4:crs>
-                            </lt4:location>
-                        </lt5:destination>
-                    </lt5:service>
-                    <lt5:service>
-                        <lt4:std>14:26</lt4:std>
-                        <lt4:etd>On time</lt4:etd>
-                        <lt4:platform>1</lt4:platform>
-                        <lt4:operator>Southeastern</lt4:operator>
-                        <lt4:operatorCode>SE</lt4:operatorCode>
-                        <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>+Ubk9d+HoZdXI4u1L+5wSA==</lt4:serviceID>
-                        <lt5:origin>
-                            <lt4:location>
-                                <lt4:locationName>Gravesend</lt4:locationName>
-                                <lt4:crs>GRV</lt4:crs>
-                            </lt4:location>
-                        </lt5:origin>
-                        <lt5:destination>
-                            <lt4:location>
-                                <lt4:locationName>London Victoria</lt4:locationName>
-                                <lt4:crs>VIC</lt4:crs>
-                                <lt4:via>via Bexleyheath</lt4:via>
-                            </lt4:location>
-                        </lt5:destination>
-                    </lt5:service>
-                    <lt5:service>
-                        <lt4:std>14:30</lt4:std>
-                        <lt4:etd>On time</lt4:etd>
-                        <lt4:platform>2</lt4:platform>
-                        <lt4:operator>Southeastern</lt4:operator>
-                        <lt4:operatorCode>SE</lt4:operatorCode>
-                        <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>8IzgDn8OxUojQ2Y7FvhyVw==</lt4:serviceID>
-                        <lt5:origin>
-                            <lt4:location>
-                                <lt4:locationName>London Victoria</lt4:locationName>
-                                <lt4:crs>VIC</lt4:crs>
-                            </lt4:location>
-                        </lt5:origin>
-                        <lt5:destination>
-                            <lt4:location>
-                                <lt4:locationName>Gravesend</lt4:locationName>
-                                <lt4:crs>GRV</lt4:crs>
-                            </lt4:location>
-                        </lt5:destination>
-                    </lt5:service>
-                    <lt5:service>
-                        <lt4:std>14:34</lt4:std>
-                        <lt4:etd>On time</lt4:etd>
-                        <lt4:operator>Thameslink</lt4:operator>
-                        <lt4:operatorCode>TL</lt4:operatorCode>
-                        <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>DWyGnaH3zpmztzjib4TvUA==</lt4:serviceID>
-                        <lt5:origin>
-                            <lt4:location>
-                                <lt4:locationName>Kentish Town</lt4:locationName>
-                                <lt4:crs>KTN</lt4:crs>
-                            </lt4:location>
-                        </lt5:origin>
-                        <lt5:destination>
-                            <lt4:location>
-                                <lt4:locationName>Rainham (Kent)</lt4:locationName>
-                                <lt4:crs>RAI</lt4:crs>
-                            </lt4:location>
-                        </lt5:destination>
-                    </lt5:service>
-                    <lt5:service>
-                        <lt4:std>14:44</lt4:std>
-                        <lt4:etd>On time</lt4:etd>
-                        <lt4:operator>Southeastern</lt4:operator>
-                        <lt4:operatorCode>SE</lt4:operatorCode>
-                        <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>D6p+cSP+54t2SWT/84p//g==</lt4:serviceID>
-                        <lt5:origin>
-                            <lt4:location>
-                                <lt4:locationName>Gravesend</lt4:locationName>
-                                <lt4:crs>GRV</lt4:crs>
-                            </lt4:location>
-                        </lt5:origin>
-                        <lt5:destination>
-                            <lt4:location>
-                                <lt4:locationName>London Charing Cross</lt4:locationName>
-                                <lt4:crs>CHX</lt4:crs>
-                                <lt4:via>via Sidcup</lt4:via>
-                            </lt4:location>
-                        </lt5:destination>
-                    </lt5:service>
-                    <lt5:service>
-                        <lt4:std>14:47</lt4:std>
-                        <lt4:etd>On time</lt4:etd>
-                        <lt4:operator>Southeastern</lt4:operator>
-                        <lt4:operatorCode>SE</lt4:operatorCode>
-                        <lt4:serviceType>train</lt4:serviceType>
-                        <lt4:serviceID>ikvrDycD1hTAPWjFBIIWWA==</lt4:serviceID>
+                        <lt4:serviceID>vyYQwBksVSjvkNfSpAoTBQ==</lt4:serviceID>
+                        <lt5:rsid>SE015800</lt5:rsid>
                         <lt5:origin>
                             <lt4:location>
                                 <lt4:locationName>London Charing Cross</lt4:locationName>
@@ -221,8 +237,8 @@
                         </lt5:origin>
                         <lt5:destination>
                             <lt4:location>
-                                <lt4:locationName>Gravesend</lt4:locationName>
-                                <lt4:crs>GRV</lt4:crs>
+                                <lt4:locationName>Orpington</lt4:locationName>
+                                <lt4:crs>ORP</lt4:crs>
                             </lt4:location>
                         </lt5:destination>
                     </lt5:service>

@@ -3,9 +3,7 @@
           xmlns:tools="http://schemas.android.com/tools"
           android:id="@+id/title"
           tools:text="London Bridge"
-          android:background="@drawable/item_rectangular_background"
-          android:minHeight="@dimen/button_min_height"
-          android:padding="@dimen/gap_normal"
-          android:textSize="@dimen/text_item_station"
+          android:textSize="@dimen/text_item_board"
+          android:gravity="center_vertical"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"/>

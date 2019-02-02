@@ -1,8 +1,8 @@
 package com.scurab.android.uktrains
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.scurab.android.uktrains.ui.PickStationFragment
+import androidx.appcompat.app.AppCompatActivity
+import com.scurab.android.uktrains.ui.MainFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.apply {
             if (findFragmentById(R.id.fragment_container) == null) {
                 beginTransaction()
-                    .replace(R.id.fragment_container, PickStationFragment())
+                    .replace(R.id.fragment_container, MainFragment())
                     .commit()
             }
         }

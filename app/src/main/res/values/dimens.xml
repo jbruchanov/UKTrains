@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="gap_large">16dp</dimen>
     <dimen name="gap_normal">8dp</dimen>
     <dimen name="button_min_height">48dp</dimen>
+    <dimen name="item_header_remove_size">30dp</dimen>
     <dimen name="text_item_station">24sp</dimen>
+    <dimen name="text_item_board">16sp</dimen>
+    <dimen name="text_item_board_header">@dimen/text_item_station</dimen>
 </resources>
